@@ -1,12 +1,13 @@
 """
-	Vander(x, increasing::Bool=true)
+	Vander(x, order::Int=0, increasing::Bool=true)
 
 Create a Vander Matrix depends on the input Vector. 
 
 ...
 # Arguments
 - 'x::Union{AbstractVector, Array{::Real,2}': one dimension Vector or Matrix.
-- 'increasing::Bool=true':
+- 'order': the row or column dimension of Matrix depends on increasing.
+- 'increasing::Bool=true': decide the orientation of Matrix.
 ...
 # Examples
 ```julia-repl
@@ -20,10 +21,10 @@ julia> Vander([1, 2, 3], false)
   1 4 9 ]
 ```
 """
-function Vander(x::Union{AbstractVector, Array{<:Real,2}}, increasing::Bool=true)
-	x_len=length(x);
+function Vander(x::Union{AbstractVector, Array{<:Real,2}}, order::Int=0, increasing::Bool=true)
+	row_len=length(x);
 
-	if x_len==0
+	if row_len==0
 		error("Pls input a vector which length > 0");
 	end
 
@@ -33,10 +34,16 @@ function Vander(x::Union{AbstractVector, Array{<:Real,2}}, increasing::Bool=true
 		end
 	end
 
+	if order<0
+		error("Pls input a order>0")
+	end
+	col_len= order>0 ? order : row_len
+
 	T=typeof(x[1]);
 	if T <: Number
-		vander_matrix=Matrix{T}(undef, x_len, x_len);
-		for i in 1:x_len
+		vander_matrix=Matrix{T}(undef, row_len, col_len);
+
+		for i in 1:col_len
 			vander_matrix[:, i]=@. x^(i-1);
 		end
 	
