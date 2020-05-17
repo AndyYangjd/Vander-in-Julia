@@ -37,7 +37,7 @@ function Vander(x::Union{AbstractVector, Array{<:Real,2}}, order::Int=0, increas
 	if order<0
 		error("Pls input a order>0")
 	end
-	col_len= order>0 ? order : row_len
+	col_len= order>0 ? order+1 : row_len
 
 	T=typeof(x[1]);
 	if T <: Number
