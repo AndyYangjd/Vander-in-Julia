@@ -1,4 +1,4 @@
-#=	program2.jl
+#=	program2`.jl
 
 使用梯度方向+Goldstein-Armijo准则求函数 f(x)=x1^2+25x2^2的极小点。
 迭代起始点为 x0=[2;2]，Armijo准则参数 u1=0.2, u2=0.8, p1=0.5, p2=1.5。
@@ -54,7 +54,7 @@ while norm(x_next) > TOL
 	x_next = x_next - alpha * G_k;
 	# 将运算过程中的值保存
 	x_list = hcat(x_list, x_next);
-	y_list = push!(y_list, y_k);
+	y_list = push!(y_list, f(x_next));
 	grad_list = hcat(grad_list, G_k);
 	alpha_list = push!(alpha_list, alpha);
 end
