@@ -6,3 +6,4 @@
 - vander.jl: 仅包含一个函数，通过输入向量得出其对应的范德蒙矩阵，对LinearALagebra库中特殊函数的补充
 - program1.jl：采用梯度下降+最大下降步长的方法求一个二次函数极小值
 - program2.jl：采用梯度下降+Armijo-Goldstein准则算法求一个二次函数极小值
+- program3.jl：采用阻尼牛顿法求一个二次函数极小值，结果证明最佳，一步到位。
