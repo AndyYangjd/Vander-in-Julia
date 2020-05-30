@@ -11,3 +11,5 @@
 - program5.jl：采用共轭梯度法求二个函数极小值
 - program6.jl：手写二次插值法
 - program7.jl：使用牛顿差商求多项式的系统
+- program8.jl：Shebyshev插值法
+- test_of_mean_and_var.jl：样本均值和方差的仿真
